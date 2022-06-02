@@ -1,10 +1,10 @@
 import numpy as np
-np.set_printoptions(threshold=np.nan)
+np.set_printoptions(threshold=np.sys.maxsize)
 import numpy.linalg as la
 import os
 import os.path
 import cv2
-import cv2.cv as cv
+# import cv2.cv as cv
 import math
 import matplotlib.pyplot as plt
 import time
@@ -20,19 +20,19 @@ def main():
 	if(not os.path.isfile(bg_filpath)):
 		if(not os.path.exists('..//img')):
 			os.mkdir('..//img')
-		print "Background has not been extracted, will extract."
+		print ("Background has not been extracted, will extract.")
 		bgextraction.extract_background(vid_filepath)
 	bg_img = cv2.imread(bg_filpath)
-	print "Background image found"
+	print ("Background image found")
 
 	if(not os.path.isfile(hgmatrix_filepath)):
 		if(not os.path.exists('..//txt')):
 			os.mkdir('..//txt')
-		print "Homography matrix has not been created."
+		print ("Homography matrix has not been created.")
 		topview.create_homography()
 	hg_matrix = np.loadtxt(hgmatrix_filepath)
-	print "Homography matrix found"
-	print hg_matrix
+	print ("Homography matrix found")
+	print (hg_matrix)
 	
 	playertrack.track_player(hg_matrix)
 	

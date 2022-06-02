@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-import cv
+# import cv
 import time
 import datetime
 import topview
@@ -16,12 +16,13 @@ writeVedioName = '..//vid//offside.avi'
 def track_player(hg_matrix):
 	bg_img = cv2.imread(bg_filpath)
 	gray_bg_img = cv2.cvtColor(bg_img, cv2.COLOR_BGR2GRAY)
+	# gray_img = cv2.cvtColor(bg_img, cv2.COLOR_BGR2GRAY)
 	vid_cap = cv2.VideoCapture(vid_filepath)
-	frame_height = vid_cap.get(cv.CV_CAP_PROP_FRAME_HEIGHT)
-	frame_width = vid_cap.get(cv.CV_CAP_PROP_FRAME_WIDTH)
-	frame_count = vid_cap.get(cv.CV_CAP_PROP_FRAME_COUNT)
+	frame_height = vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+	frame_width = vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+	frame_count = vid_cap.get(cv2.CAP_PROP_FRAME_COUNT)
 
-	fps = vid_cap.get(cv.CV_CAP_PROP_FPS)
+	fps = vid_cap.get(cv2.CAP_PROP_FPS)
 
     #flag to indicate whether computing player moving distance done
 	flag = True
@@ -36,6 +37,7 @@ def track_player(hg_matrix):
 
 		gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+		# if gray_img:
 		bg_delta = cv2.absdiff(gray_bg_img, gray_img)
 
 		
@@ -100,4 +102,4 @@ def track_player(hg_matrix):
 	# playerDistance.compute(first_player_pos, vid_filepath) # Will compute player distance but was not tested and might cause problems
 	# Left commented
 	vid_cap.release()
-	cv2.destroyAllWindows()
+	# cv2.destroyAllWindows()

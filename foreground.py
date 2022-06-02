@@ -1,9 +1,9 @@
 import numpy as np
-np.set_printoptions(threshold=np.nan)
+np.set_printoptions(threshold=np.sys.maxsize)
 import numpy.ma as ma
 import numpy.linalg as la
 import cv2
-import cv2.cv as cv
+# import cv2.cv as cv
 import math
 import matplotlib.pyplot as plt
 import time
@@ -108,10 +108,10 @@ def main():
     # Read the video
 
     cap = cv2.VideoCapture("football_left.mp4")
-    n_frames = cap.get(cv.CV_CAP_PROP_FRAME_COUNT)
-    fwidth = cap.get(cv.CV_CAP_PROP_FRAME_WIDTH)
-    fheight = cap.get(cv.CV_CAP_PROP_FRAME_HEIGHT)
-    fps = cap.get(cv.CV_CAP_PROP_FPS)
+    n_frames = cap.get(cv2.CV_CAP_PROP_FRAME_COUNT)
+    fwidth = cap.get(cv2.CV_CAP_PROP_FRAME_WIDTH)
+    fheight = cap.get(cv2.CV_CAP_PROP_FRAME_HEIGHT)
+    fps = cap.get(cv2.CV_CAP_PROP_FPS)
     print "Frame - width:", fwidth, ", height:", fheight, ", FPS:", fps, ", # Frames:", n_frames
 
     

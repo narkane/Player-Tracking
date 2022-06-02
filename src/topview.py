@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.linalg as la
 import cv2
-import cv2.cv as cv
+# import cv2.cv as cv
 import math
 import matplotlib.pyplot as plt
 import time
@@ -15,7 +15,7 @@ field_counter = 0
 
 def field_click(event, x, y, flags, param):
 	global field_counter
-	if (event == cv.CV_EVENT_LBUTTONUP):
+	if (event == cv2.CV_EVENT_LBUTTONUP):
 		if (field_counter >=4):
 			print "Press any key to continue"
 		else:
@@ -36,7 +36,7 @@ def create_homography():
 	print "Select the four corners from the Background"
 	print "The corners should be selected: Left-Down, Left-Top, Right-Top, Right-Down"
 	cv2.namedWindow('Side-View')
-	cv.SetMouseCallback('Side-View', field_click, None)
+	cv2.SetMouseCallback('Side-View', field_click, None)
 	cv2.imshow('Side-View', side_image)
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()

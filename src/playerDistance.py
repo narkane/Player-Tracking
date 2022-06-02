@@ -1,5 +1,5 @@
 import cv2
-import cv2.cv as cv
+# import cv2.cv as cv
 import numpy as np
 import math
 import sideline as sl
@@ -62,9 +62,9 @@ def getDistance(point1, point2):
 
 # get the player list
 # to be implemented
-# use cv.GoodFeaturesToTrack to get fake players first
+# use cv2.GoodFeaturesToTrack to get fake players first
 def getplayers(frame):
-    return cv.GoodFeaturesToTrack(frame, None, None, numOfPlayers, 0.1, 1)
+    return cv2.GoodFeaturesToTrack(frame, None, None, numOfPlayers, 0.1, 1)
 
 
 # use fake points for testing
@@ -73,20 +73,20 @@ def fakePlayer():
 
 def compute(playerList, video):
     videoName = video
-    capture = cv.CaptureFromFile(videoName)
+    capture = cv2.CaptureFromFile(videoName)
 
-    count = int(cv.GetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_COUNT))
-    fps = cv.GetCaptureProperty(capture, cv.CV_CAP_PROP_FPS)
-    width = int(cv.GetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_WIDTH))
-    height = int(cv.GetCaptureProperty(capture, cv.CV_CAP_PROP_FRAME_HEIGHT))
+    count = int(cv2.GetCaptureProperty(capture, cv2.CV_CAP_PROP_FRAME_COUNT))
+    fps = cv2.GetCaptureProperty(capture, cv2.CV_CAP_PROP_FPS)
+    width = int(cv2.GetCaptureProperty(capture, cv2.CV_CAP_PROP_FRAME_WIDTH))
+    height = int(cv2.GetCaptureProperty(capture, cv2.CV_CAP_PROP_FRAME_HEIGHT))
 
     # store the last frame 
-    preFrame = cv.CreateImage((width,height), 8, 1) 
+    preFrame = cv2.CreateImage((width,height), 8, 1) 
     # store the current frame
-    curFrame = cv.CreateImage((width,height), 8, 1) 
+    curFrame = cv2.CreateImage((width,height), 8, 1) 
 
-    prePyr = cv.CreateImage((height / 3, width + 8), 8, cv.CV_8UC1) 
-    curPyr = cv.CreateImage((height / 3, width + 8), 8, cv.CV_8UC1) 
+    prePyr = cv2.CreateImage((height / 3, width + 8), 8, cv2.CV_8UC1) 
+    curPyr = cv2.CreateImage((height / 3, width + 8), 8, cv2.CV_8UC1) 
 
     numOfPlayers = len(playerList)
 
@@ -98,41 +98,41 @@ def compute(playerList, video):
     # store players position of current frame
     curPlayers = [] 
 
-    img = cv.CreateImage((width,height), 8, 1)
+    img = cv2.CreateImage((width,height), 8, 1)
 
     #flag of storing player info
     flagInfo = True
 
     for f in xrange(count):
-        frame = cv.QueryFrame(capture)
+        frame = cv2.QueryFrame(capture)
 
         if(flagInfo):
-            cv.CvtColor(frame, img, cv.CV_BGR2GRAY)
+            cv2.CvtColor(frame, img, cv2.CV_BGR2GRAY)
             for i in range(numOfPlayers):
-                font=cv.InitFont(cv.CV_FONT_HERSHEY_SCRIPT_SIMPLEX, 0.4, 0.4, 0, 2, 3)
+                font=cv2.InitFont(cv2.CV_FONT_HERSHEY_SCRIPT_SIMPLEX, 0.4, 0.4, 0, 2, 3)
                 
-                cv.PutText(img, str(i), (int(prePlayers[i][0][0]), int(prePlayers[i][0][1])), font, (255,255,255))
-            cv.SaveImage(playerInfo,img)
+                cv2.PutText(img, str(i), (int(prePlayers[i][0][0]), int(prePlayers[i][0][1])), font, (255,255,255))
+            cv2.SaveImage(playerInfo,img)
             flagInfo = False
 
         
         #Convert to gray
-        cv.CvtColor(frame, curFrame, cv.CV_BGR2GRAY) 
+        cv2.CvtColor(frame, curFrame, cv2.CV_BGR2GRAY) 
         
         #Calculate the movement using the previous and the current frame using the previous points
-        curPlayers, status, err = cv.CalcOpticalFlowPyrLK(preFrame, curFrame, prePyr, curPyr, prePlayers, (10, 10), 3, (cv.CV_TERMCRIT_ITER|cv.CV_TERMCRIT_EPS,20, 0.03), 0)
+        curPlayers, status, err = cv2.CalcOpticalFlowPyrLK(preFrame, curFrame, prePyr, curPyr, prePlayers, (10, 10), 3, (cv2.CV_TERMCRIT_ITER|cv2.CV_TERMCRIT_EPS,20, 0.03), 0)
 
         ###temp = frame
         # add new distance to list
         for i in range(numOfPlayers):
             players[i] += getDistance(prePlayers[i], curPlayers[i])
-            ###cv.Line(temp, (int(prePlayers[i][0]), int(prePlayers[i][1])), (int(curPlayers[i][0]), int(curPlayers[i][1])), (255,122,122),3)
+            ###cv2.Line(temp, (int(prePlayers[i][0]), int(prePlayers[i][1])), (int(curPlayers[i][0]), int(curPlayers[i][1])), (255,122,122),3)
 
-        ###cv.ShowImage("test", temp)
+        ###cv2.ShowImage("test", temp)
         ###cv2.waitKey(20)
         
         #Put the current frame preFrame 
-        cv.Copy(curFrame, preFrame) 
+        cv2.Copy(curFrame, preFrame) 
         prePlayers = curPlayers
     ###cv2.destroyAllWindows()
     # print distance

@@ -8,7 +8,7 @@ import math
 import time
 import random
 import cv2
-import cv2.cv as cv
+# import cv2.cv as cv
 
 UNCLASSIFIED = 0
 NOISE = -1

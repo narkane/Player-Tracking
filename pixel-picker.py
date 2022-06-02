@@ -2,7 +2,7 @@ import numpy as np
 np.set_printoptions(threshold=np.nan)
 import numpy.linalg as la
 import cv2
-import cv2.cv as cv
+# import cv2.cv as cv
 import math
 import matplotlib.pyplot as plt
 import time
@@ -12,7 +12,7 @@ import time
 start_time = time.time()
 
 def on_mouse(event, x, y, flags, param):
-    if event == cv.CV_EVENT_LBUTTONUP:
+    if event == cv2.CV_EVENT_LBUTTONUP:
         print ("col: %d, row: %d" % (x, y))
 
 def main():
@@ -23,10 +23,10 @@ def main():
     # Print the frame width, frame height, frames per second 
     # and frame count of the input video using cap.get
 
-    fwidth = cap.get(cv.CV_CAP_PROP_FRAME_WIDTH)
-    fheight = cap.get(cv.CV_CAP_PROP_FRAME_HEIGHT)
-    fps = cap.get(cv.CV_CAP_PROP_FPS)
-    fcount = cap.get(cv.CV_CAP_PROP_FRAME_COUNT)
+    fwidth = cap.get(cv2.CV_CAP_PROP_FRAME_WIDTH)
+    fheight = cap.get(cv2.CV_CAP_PROP_FRAME_HEIGHT)
+    fps = cap.get(cv2.CV_CAP_PROP_FPS)
+    fcount = cap.get(cv2.CV_CAP_PROP_FRAME_COUNT)
 
     print "Frame width: " + str(fwidth) + "\nFrame height: " + str(fheight) + "\nFrames per second: " + str(fps) + "\nFrame count: " + str(fcount)
 
@@ -35,7 +35,7 @@ def main():
     
     # img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     cv2.namedWindow('frame1')
-    cv.SetMouseCallback('frame1', on_mouse, None)
+    cv2.SetMouseCallback('frame1', on_mouse, None)
     cv2.imshow('frame1', img)
     cv2.waitKey(0)
     

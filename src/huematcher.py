@@ -1,5 +1,5 @@
 import cv2
-import cv2.cv as cv
+# import cv2.cv as cv
 
 # Hue profiles based on first frame of videos
 
