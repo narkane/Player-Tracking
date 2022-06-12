@@ -110,16 +110,22 @@ def draw(img, players):
 	flag = True
 	startPoint = 30
 	if(bluePlayers == []):
-		font=cv2.InitFont(cv2.CV_FONT_HERSHEY_COMPLEX, 0.5, 0.8, 0, 1, 5)
-		img = cv2.fromarray(img)
-		cv2.PutText(img, 'blue players not enough, need at least 1 blue player', (0,startPoint), font, (0,0,255))
+		# font=cv2.InitFont(cv2.CV_FONT_HERSHEY_COMPLEX, 0.5, 0.8, 0, 1, 5)
+		# img = cv2.fromarray(img)
+		fontface = cv2.FONT_HERSHEY_SIMPLEX
+		fontscale = 1
+		fontcolor = (255, 255, 255)
+		cv2.putText(img, 'blue players not enough, need at least 1 blue player', (0,startPoint), fontface, fontscale, (0,0,255))
 		img = np.asarray(img)
 		startPoint += 25
 		flag = False
 	if(redPlayers == []):
-		img = cv2.fromarray(img)
-		font=cv2.InitFont(cv2.CV_FONT_HERSHEY_COMPLEX, 0.5, 0.8, 0, 1, 5)
-		cv2.PutText(img, 'red players not enough, need at least 1 red player', (0,startPoint), font, (0,0,255))
+		# img = cv2.fromarray(img)
+		# font=cv2.InitFont(cv2.CV_FONT_HERSHEY_COMPLEX, 0.5, 0.8, 0, 1, 5)
+		fontface = cv2.FONT_HERSHEY_SIMPLEX
+		fontscale = 1
+		fontcolor = (255, 255, 255)
+		cv2.putText(img, 'red players not enough, need at least 1 red player', (0,startPoint), fontface, fontscale, (0,0,255))
 		img = np.asarray(img)
 		flag = False
 

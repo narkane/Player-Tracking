@@ -136,7 +136,7 @@ def bottom_most_point(cluster, pts):
 
 def main():
     distances = np.loadtxt("distance.txt.gz")
-    print "distances:", distances.shape
+    print ("distances:", distances.shape)
     #region_query_test(distances)
     for i in range(20, 21):
         j = i / 1000.
@@ -145,4 +145,4 @@ def main():
     
 
 main()
-print "Done!"
+print ("Done!")

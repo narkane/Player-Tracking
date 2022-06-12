@@ -112,7 +112,7 @@ def main():
     fwidth = cap.get(cv2.CV_CAP_PROP_FRAME_WIDTH)
     fheight = cap.get(cv2.CV_CAP_PROP_FRAME_HEIGHT)
     fps = cap.get(cv2.CV_CAP_PROP_FPS)
-    print "Frame - width:", fwidth, ", height:", fheight, ", FPS:", fps, ", # Frames:", n_frames
+    print ("Frame - width:", fwidth, ", height:", fheight, ", FPS:", fps, ", # Frames:", n_frames)
 
     
     for i in range(5001):
@@ -123,8 +123,8 @@ def main():
     offset_v = 267
     start_time = time.time()
     obj_mask, obj_x, obj_y = object_mask(f, bg, offset_v)
-    print "Object mask completed in", (time.time() - start_time), "s"
-    print "Object points:", obj_x.shape, obj_y.shape
+    print ("Object mask completed in", (time.time() - start_time), "s")
+    print ("Object points:", obj_x.shape, obj_y.shape)
     
     purple = (217, 156, 177)
     fg = mask_background(f, obj_mask, purple)
@@ -141,4 +141,4 @@ def main():
     cap.release()
 
 main()
-print "Done!"
+print ("Done!")

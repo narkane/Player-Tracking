@@ -17,10 +17,10 @@ def field_click(event, x, y, flags, param):
 	global field_counter
 	if (event == cv2.CV_EVENT_LBUTTONUP):
 		if (field_counter >=4):
-			print "Press any key to continue"
+			print ("Press any key to continue")
 		else:
 			field_corners[field_counter, :] = [x,y]
-			print x,y
+			print (x,y)
 			field_counter +=1
 
 
@@ -33,8 +33,8 @@ def create_homography():
 	top_image = cv2.imread(filename_topview)
 	side_image = cv2.imread(filename_sideview)
 	
-	print "Select the four corners from the Background"
-	print "The corners should be selected: Left-Down, Left-Top, Right-Top, Right-Down"
+	print ("Select the four corners from the Background")
+	print ("The corners should be selected: Left-Down, Left-Top, Right-Top, Right-Down")
 	cv2.namedWindow('Side-View')
 	cv2.SetMouseCallback('Side-View', field_click, None)
 	cv2.imshow('Side-View', side_image)

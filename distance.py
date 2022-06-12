@@ -35,11 +35,11 @@ def distance_matrix(points):
 
 def main():    
     pts = np.loadtxt("foreground.txt")
-    print "points:", pts.shape
+    print ("points:", pts.shape)
     start_time = time.time()
     distances = distance_matrix(pts)
     print ("Distance matrix %s (%ds)" % (str(distances.shape), time.time() - start_time))
     np.savetxt("distance.txt.gz", distances, '%5.8f')
 
 main()
-print "Done!"
+print ("Done!")

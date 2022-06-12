@@ -36,6 +36,19 @@ def track_player(hg_matrix):
 			break
 
 		gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	
+		# dimensions_bg = (gray_bg_img.shape[0], gray_bg_img.shape[1])
+		# print("DEMONS!: ", dimensions_img)
+		# print("DEMON BeeGees!: ", dimensions_bg)
+
+		dimensions_img = (gray_img.shape[1], gray_img.shape[0])
+		gray_bg_img = cv2.resize(gray_bg_img, dimensions_img, interpolation= cv2.INTER_LINEAR)
+
+		# cv2.imshow("frame", gray_img)
+		# cv2.imshow("bg", gray_bg_img)
+		# cv2.waitKey(0)
+		# print("gray_bg_img.shape: ", gray_bg_img.shape)
+		# print("gray_img.shape: ", gray_img.shape)
 
 		# if gray_img:
 		bg_delta = cv2.absdiff(gray_bg_img, gray_img)

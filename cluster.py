@@ -66,7 +66,7 @@ def show_medoids_on_frame(medoids):
 def main():    
     n_clusters = int(18*2)
     distances = np.loadtxt("distance.txt.gz")
-    print "distances:", distances.shape
+    print ("distances:", distances.shape)
     
     start_time = time.time()
     clusters, medoids = cluster(distances, k=n_clusters)
@@ -78,4 +78,4 @@ def main():
     show_medoids_on_frame(medoids)
 
 main()
-print "Done!"
+print ("Done!")

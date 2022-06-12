@@ -13,13 +13,13 @@ def extract_background(videoFile):
 		frame_height = vid_cap.get(cv2.CV_CAP_PROP_FRAME_HEIGHT)
 		frame_width = vid_cap.get(cv2.CV_CAP_PROP_FRAME_WIDTH)
 		frame_count = vid_cap.get(cv2.CV_CAP_PROP_FRAME_COUNT)
-		print 'FPS', fps
-		print 'Frame Height', frame_height
-		print 'Frame Width', frame_width
-		print 'Frame Count', frame_count
+		print ('FPS', fps)
+		print ('Frame Height', frame_height)
+		print ('Frame Width', frame_width)
+		print ('Frame Count', frame_count)
 
 		frame_count = int(frame_count)
-		print "Extracting background"
+		print ("Extracting background")
 		_,img = vid_cap.read()
 		avg_img = img
 		
@@ -29,7 +29,7 @@ def extract_background(videoFile):
 			fr_fl = float(fr)
 			avg_img = (fr_fl*avg_img + img)/(fr_fl+1)
 			
-		print "Saving background"
+		print ("Saving background")
 		vid_cap.release()
 		cv2.imwrite(bg_filpath, avg_img)
 	else:

@@ -9,7 +9,7 @@ import time
 
 def on_mouse(event, x, y, flags, hsv):
     if event == cv2.CV_EVENT_LBUTTONUP:
-        print "(", y, ",", x, "):", hsv[y, x]
+        print ("(", y, ",", x, "):", hsv[y, x])
 
 def main():
     # Read the .mp4 video using OpenCV Python API cv2.VideoCapture
@@ -31,4 +31,4 @@ def main():
     cap.release()
 
 main()
-print "Done!"
+print ("Done!")

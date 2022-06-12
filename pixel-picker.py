@@ -28,7 +28,7 @@ def main():
     fps = cap.get(cv2.CV_CAP_PROP_FPS)
     fcount = cap.get(cv2.CV_CAP_PROP_FRAME_COUNT)
 
-    print "Frame width: " + str(fwidth) + "\nFrame height: " + str(fheight) + "\nFrames per second: " + str(fps) + "\nFrame count: " + str(fcount)
+    print ("Frame width: " + str(fwidth) + "\nFrame height: " + str(fheight) + "\nFrames per second: " + str(fps) + "\nFrame count: " + str(fcount))
 
     _,img = cap.read()
     

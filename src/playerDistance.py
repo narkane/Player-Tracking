@@ -140,7 +140,7 @@ def compute(playerList, video):
     f = open(recordFile, 'w')
     for player in players:
         i += 1
-        print "player", i, "running distance: ", player, "\n"
+        print ("player", i, "running distance: ", player, "\n")
         f.write("player" + str(i) +" running distance: " + str(player) + "meters\n")
 
 ###compute(fakePlayer(), videoName)
