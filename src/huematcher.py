@@ -16,22 +16,22 @@ range_width = 10
 range_width_half = range_width / 2
 
 def is_white_keeper(average_hue):
-    if average_hue in range(white_keeper_hp - range_width_half, white_keeper_hp + range_width_half):
+    if average_hue in range(int(white_keeper_hp - range_width_half), int(white_keeper_hp + range_width_half)):
         return True
     return False
 
 def is_green_keeper(average_hue):
-    if average_hue in range(green_keeper_hp - range_width_half, green_keeper_hp + range_width_half):
+    if average_hue in range(int(green_keeper_hp - range_width_half), int(green_keeper_hp + range_width_half)):
         return True
     return False
 
 def is_red_player(average_hue):
-    if average_hue in range(red_player_hp - range_width_half, red_player_hp + range_width_half):
+    if average_hue in range(int(red_player_hp - range_width_half), int(red_player_hp + range_width_half)):
         return True
     return False
 
 def is_blue_player(average_hue):
-    if average_hue in range(blue_player_hp - range_width_half, blue_player_hp + range_width_half):
+    if average_hue in range(int(blue_player_hp - range_width_half), int(blue_player_hp + range_width_half)):
         return True
     return False
 
@@ -51,7 +51,9 @@ def average_hue(x, y, width, height, frame):
     n_points = 0
     for i in range(x, x + width + 1):
         for j in range(y, y + height + 1):
-           sum += hsv[j, i, 0]
+            # !!! j-1 IS AN AWFUL HACK FIX for out of bounds !!!!
+        #    print(i,j-1)
+           sum += hsv[j-1, i-1, 0]
            n_points += 1
     return sum / n_points
 

@@ -9,10 +9,10 @@ def extract_background(videoFile):
 	"""Receives a video filename(with extension) and returns the extracted background"""
 	vid_cap = cv2.VideoCapture(videoFile)
 	if vid_cap.isOpened():
-		fps = vid_cap.get(cv2.CV_CAP_PROP_FPS)
-		frame_height = vid_cap.get(cv2.CV_CAP_PROP_FRAME_HEIGHT)
-		frame_width = vid_cap.get(cv2.CV_CAP_PROP_FRAME_WIDTH)
-		frame_count = vid_cap.get(cv2.CV_CAP_PROP_FRAME_COUNT)
+		fps = vid_cap.get(cv2.CAP_PROP_FPS)
+		frame_height = vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+		frame_width = vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+		frame_count = vid_cap.get(cv2.CAP_PROP_FRAME_COUNT)
 		print ('FPS', fps)
 		print ('Frame Height', frame_height)
 		print ('Frame Width', frame_width)
